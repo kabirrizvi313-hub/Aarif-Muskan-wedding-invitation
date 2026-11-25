@@ -107,6 +107,7 @@ section:not(.run) *{animation-play-state:paused!important}
 #ts{position:fixed;left:50%;bottom:7svh;transform:translateX(-50%);background:var(--w);color:var(--g2);padding:9px 18px;border-radius:20px;font-size:12px;z-index:95;opacity:0;transition:opacity .3s;pointer-events:none}
 #mu{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:95;width:42px;height:42px;border-radius:50%;border:1px solid var(--g);background:var(--w);color:var(--g2);font-size:18px;display:none;cursor:pointer}
 @media(min-width:700px){#mn{max-width:520px;margin:0 auto}}.fam{font-size:12.5px;line-height:1.7;margin-top:10px}
+#sd.open #opn{display:none}#opn{font-size:13px;padding:14px 28px;animation:opnp 1.8s ease-in-out infinite}@keyframes opnp{50%{transform:scale(1.06)}}
 </style></head><body class="lock">
 <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a67c27"/><stop offset=".5" stop-color="#f6e2a0"/><stop offset="1" stop-color="#b8892f"/></linearGradient>
 <symbol id="em" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="none" stroke="url(#gg)" stroke-width="2.5"/><circle cx="50" cy="50" r="42" fill="none" stroke="url(#gg)" stroke-width=".8" stroke-dasharray="1.5 2.5"/><g fill="none" stroke="url(#gg)" stroke-width="2"><rect x="24" y="24" width="52" height="52"/><rect x="24" y="24" width="52" height="52" transform="rotate(45 50 50)"/></g><text x="50" y="58" text-anchor="middle" font-family="Amiri,serif" font-size="21" font-weight="700" fill="url(#gg)">يا الله</text></symbol>
@@ -128,7 +129,7 @@ section:not(.run) *{animation-play-state:paused!important}
 </section>
 <section id="sd"><div class="rv"><p class="sm">Save the date</p><h2>Pull to reveal</h2></div>
 <div id="rw" class="rv"><div id="rod"></div><div id="cl"><div id="paper"></div></div><div id="roll"><div id="tas"></div><span id="fng">👆</span></div></div>
-<div class="rv"><div id="cd">-- d · -- h · -- m · -- s</div><a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebrations&dates=20261215T123000Z/20261215T170000Z&location=Imam+Bargah+Chholas+Sadat+Dadri&details=Muskan+%26+Sahil+%7C+Aarif+%26+Swaleha">Add to calendar</a></div></section>
+<div class="rv"><div id="cd">-- d · -- h · -- m · -- s</div><button type="button" class="btn" id="opn">✨ Tap to open</button></div></section>
 <section><div class="rv"><p class="sm">Wedding festivities</p><h2>The Celebrations</h2></div><div class="car rv" id="c1"></div><div class="dots" id="d1"></div></section>
 <section><div class="rv"><p class="sm">Our story</p><h2>With Blessings</h2></div><div class="car rv" id="c2" style="height:380px"></div><div class="dots" id="d2"></div></section>
 
@@ -175,7 +176,7 @@ function burst(x,y){const k=['#c9a24b','#f1d98f','#6e1f2f','#f7b8c4'];for(let i=
 // scroll-pull
 const cl=$('#cl'),tas=$('#tas'),FULL=330;let H=0,y0=0,h0=0,mv=0,drag=0,opened=0;
 const setH=h=>{H=Math.max(0,Math.min(FULL,h));cl.style.setProperty('--h',H+'px')};
-function openS(){if(opened)return;opened=1;$('#fng').style.display='none';cl.classList.add('tr');setH(FULL);const r=cl.getBoundingClientRect();setTimeout(()=>burst(innerWidth/2,Math.min(innerHeight*.5,r.top+FULL/2)),500)}
+function openS(){if(opened)return;opened=1;$('#sd').classList.add('open');$('#fng').style.display='none';cl.classList.add('tr');setH(FULL);const r=cl.getBoundingClientRect();setTimeout(()=>burst(innerWidth/2,Math.min(innerHeight*.5,r.top+FULL/2)),500)}
 tas.addEventListener('pointerdown',e=>{if(opened)return;drag=1;mv=0;y0=e.clientY;h0=H;cl.classList.remove('tr');$('#fng').style.display='none';tas.setPointerCapture(e.pointerId)});
 tas.addEventListener('pointermove',e=>{if(!drag)return;mv=Math.max(mv,Math.abs(e.clientY-y0));setH(h0+e.clientY-y0)});
 const up=()=>{if(!drag)return;drag=0;cl.classList.add('tr');(mv<6||H>FULL*.4)?openS():setH(0)};tas.addEventListener('pointerup',up);tas.addEventListener('pointercancel',up);
@@ -205,4 +206,4 @@ function begin(){document.querySelectorAll('.ty').forEach(e=>typ(e,e.dataset.t,+
 st.addEventListener('click',()=>{if(!ready||opened0)return;opened0=1;music();st.classList.add('open');$('#mn').style.visibility='visible';setTimeout(()=>{st.classList.add('zoom');petals(60)},1500);setTimeout(()=>{st.style.opacity=0;document.body.classList.remove('lock');$('#fl').classList.add('go');begin()},2700);setTimeout(()=>st.remove(),3800)});
 const wait=(p,t)=>Promise.race([p,new Promise(r=>setTimeout(r,t))]);
 wait(Promise.all([document.fonts.load('500 20px "Playfair Display"'),document.fonts.load('400 14px Montserrat'),document.fonts.load('700 20px Amiri','يا الله'),document.fonts.ready,new Promise(r=>{au.addEventListener("canplaythrough",r,{once:true});au.load()}),...[...R,M].map(u=>{const i=new Image;i.src=u;return i.decode().catch(()=>{})})]),6000).then(()=>setTimeout(()=>{ready=1;$('#ld').style.opacity=0;$('#tp').style.opacity=1;setTimeout(()=>$('#ld').remove(),700)},500));
-</script></body></html>
+</script><script>(function(){var o=document.getElementById("opn");if(o)o.addEventListener("click",function(){openS()})})();</script></body></html>
