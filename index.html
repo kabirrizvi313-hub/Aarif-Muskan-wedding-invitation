@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Wedding Invitation — Muskan &amp; Sahil · Aarif (Kabir) &amp; Swaleha</title><meta name="description" content="With the blessings of Imam-e-Zamana (ATFS), you are cordially invited to the wedding celebrations on Tuesday, 15 December 2026 at Chholas Sadat."><meta name="theme-color" content="#f7dcd8"><meta property="og:type" content="website"><meta property="og:title" content="Wedding Invitation — Muskan &amp; Sahil · Aarif (Kabir) &amp; Swaleha"><meta property="og:description" content="With the blessings of Imam-e-Zamana (ATFS), you are cordially invited to the wedding celebrations on Tuesday, 15 December 2026 at Chholas Sadat."><meta name="twitter:card" content="summary">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Wedding Invitation — Muskan &amp; Sahil · Aarif (Kabir) &amp; Swaleha</title><meta name="description" content="With the blessings of Imam-e-Zamana (ATFS), you are cordially invited to the wedding celebrations on Tuesday, 15 December 2026 at Chholas Sadat."><meta name="theme-color" content="#f7dcd8"><meta property="og:type" content="website"><meta property="og:title" content="Wedding Invitation — Muskan &amp; Sahil · Aarif (Kabir) &amp; Swaleha"><meta property="og:description" content="With the blessings of Imam-e-Zamana (ATFS), you are cordially invited to the wedding celebrations on Tuesday, 15 December 2026 at Chholas Sadat."><meta property="og:url" content="https://kabirrizvi313-hub.github.io/Aarif-Muskan-wedding-invitation/baraat/"><meta property="og:image" content="https://kabirrizvi313-hub.github.io/Aarif-Muskan-wedding-invitation/preview.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Wedding invitation — Muskan &amp; Sahil, Aarif (Kabir) &amp; Swaleha"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://kabirrizvi313-hub.github.io/Aarif-Muskan-wedding-invitation/preview.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--w:#6e1f2f;--g:#c9a24b;--g2:#f1d98f;--iv:#fbf3ea;--tx:#4a1420;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html{overflow-x:hidden;scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;margin:0}
 body{font:400 14px/1.6 Montserrat,sans-serif;color:var(--tx);background:linear-gradient(#fbe6e3,#f7dcd8 40%,#fbeee4);overflow-x:hidden}
 body.lock{overflow:hidden;height:100%}
 h1,h2,h3,.pf{font-family:'Playfair Display',serif;font-weight:500}
-h2{font-size:clamp(26px,7.5vw,34px);color:var(--w);margin:6px 0 14px}
+h2{font-size:clamp(26px,7.5vw,34px);line-height:1.25;color:var(--w);margin:6px 0 14px}section{overflow-x:clip}section:last-of-type{padding-bottom:100px}
 .ar{font-family:Amiri,serif;direction:rtl}
 .gold{background:linear-gradient(120deg,#a67c27,#f1d98f 45%,#b68a2e 70%,#e8c872);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sm{font:500 11px Montserrat;letter-spacing:.3em;text-transform:uppercase;color:var(--w);opacity:.8}
@@ -196,8 +196,8 @@ function typ(el,t,d){el.innerHTML='';let k=0;t.split(' ').forEach((w,wi)=>{const
 const ts=$('#ts');function toast(m){ts.textContent=m;ts.style.opacity=1;setTimeout(()=>ts.style.opacity=0,1800)}
 $('#cp').onclick=()=>{const fb=()=>{const a=mk('textarea');a.value=C.ADDR;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove()};try{navigator.clipboard.writeText(C.ADDR).catch(fb)}catch(e){fb()}toast('Address copied')};
 // music (user track, starts at 44s of original)
-let ac,mg,mute=0;const au=$('#au');
-function music(){try{ac=new(window.AudioContext||window.webkitAudioContext)();const sr=ac.createMediaElementSource(au);mg=ac.createGain();mg.gain.value=0;sr.connect(mg);mg.connect(ac.destination);ac.resume();mg.gain.linearRampToValueAtTime(.85,ac.currentTime+4)}catch(e){}au.play().catch(()=>{});$('#mu').style.display='block'}
+let mute=0;const au=$('#au');
+function music(){try{au.volume=0}catch(e){}au.play().then(()=>{let v=0;const t=setInterval(()=>{v+=.04;try{au.volume=Math.min(v,.85)}catch(e){}if(v>=.85)clearInterval(t)},150)}).catch(()=>{const r=()=>{au.play().catch(()=>{});try{au.volume=.85}catch(e){}removeEventListener('touchend',r);removeEventListener('pointerdown',r)};addEventListener('touchend',r);addEventListener('pointerdown',r)});$('#mu').style.display='block'}
 $('#mu').onclick=()=>{mute=!mute;au.muted=mute;$('#mu').textContent=mute?'🔇':'🔊'};
 document.addEventListener('visibilitychange',()=>{if(document.hidden)au.pause();else if(opened0&&!mute)au.play().catch(()=>{})});
 // start
